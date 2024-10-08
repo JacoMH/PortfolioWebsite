@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\PortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::resource('projects', ProjectsController::class);
+
+Route::get('projects', [ProjectsController::class, 'portfolio'])->name('projects.portfolio');
+
+Route::get('/skills', function() {
+    return view('skills');
+});
+
+Route::get('/contact', function() {
+    return view('contact');
 });
